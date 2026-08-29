@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nammon — Digital Marketing Portfolio</title>
+<style>
+:root{
+  --cream:#F7F2E8; --paper:#FFFDF8; --orange:#D97845;
+  --orange-dark:#A9532E; --olive:#59604A; --sage:#B9BEA4;
+  --ink:#292824; --muted:#706D65; --line:rgba(41,40,36,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(247,242,232,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;letter-spacing:-.05em;font-size:22px}.logo span{color:var(--orange)}
+.links{display:flex;gap:26px;font-size:13px;font-weight:700}.links a:hover{color:var(--orange)}
+.hero{min-height:calc(100vh - 72px);display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center;padding:70px 0}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800;color:var(--olive)}
+h1{font-size:clamp(58px,8vw,112px);line-height:.84;letter-spacing:-.075em;margin:20px 0 30px}
+h1 em{font-family:Georgia,serif;font-weight:400;color:var(--orange)}
+.lead{max-width:610px;font-size:19px;line-height:1.65;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.tag{border:1px solid var(--line);padding:10px 14px;border-radius:999px;font-size:12px;font-weight:700;background:rgba(255,255,255,.32)}
+.portrait{position:relative}
+.portrait:before{content:"";position:absolute;inset:-20px 28px 24px -20px;border:2px solid var(--orange);border-radius:180px 180px 24px 24px}
+.portrait img{position:relative;width:100%;height:min(68vh,690px);object-fit:cover;object-position:center 20%;border-radius:180px 180px 24px 24px;display:block;filter:saturate(.88)}
+.sticker{position:absolute;right:-24px;bottom:55px;width:118px;height:118px;border-radius:50%;background:var(--olive);color:white;display:grid;place-items:center;text-align:center;font:700 13px/1.35 Georgia,serif;transform:rotate(8deg)}
+section{padding:110px 0;border-top:1px solid var(--line)}
+.section-head{display:grid;grid-template-columns:140px 1fr;gap:30px;margin-bottom:52px}
+.num{font:italic 34px Georgia,serif;color:var(--orange)}
+h2{font-size:clamp(42px,6vw,76px);line-height:.95;letter-spacing:-.055em;margin:0;max-width:850px}
+.intro{font-size:17px;line-height:1.7;color:var(--muted);max-width:720px;margin:20px 0 0}
+.brand-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.brand{height:130px;display:grid;place-items:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:20px;font-weight:850;letter-spacing:-.03em;background:rgba(255,255,255,.18)}
+.brand:nth-child(3n){font-family:Georgia,serif;font-style:italic;color:var(--olive)}
+.works{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.work{min-height:350px;padding:28px;border-radius:22px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:.25s}
+.work:hover{transform:translateY(-5px)}
+.work.big{grid-column:span 7}.work.small{grid-column:span 5}.work.half{grid-column:span 6}
+.work.orange{background:var(--orange);color:#fff}.work.olive{background:var(--olive);color:#fff}
+.work .kicker{font-size:11px;text-transform:uppercase;letter-spacing:.15em;font-weight:800;opacity:.72}
+.work h3{font-size:38px;letter-spacing:-.05em;margin:10px 0}.work p{max-width:440px;line-height:1.6;opacity:.75}
+.work .ghost{font:italic 82px Georgia,serif;line-height:.8;opacity:.14;text-align:right}
+.expertise{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.skill{background:var(--cream);padding:38px;min-height:220px}
+.skill b{font:italic 25px Georgia,serif;color:var(--orange)}.skill h3{font-size:28px;margin:42px 0 10px}.skill p{color:var(--muted);line-height:1.55;margin:0}
+.thinking{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px}
+.poster-placeholder{min-height:560px;background:linear-gradient(150deg,var(--olive),#7b8169);border-radius:24px;padding:34px;color:white;display:flex;flex-direction:column;justify-content:space-between}
+.poster-placeholder strong{font:italic 58px/1 Georgia,serif}.poster-placeholder small{opacity:.75}
+.think-list{display:flex;flex-direction:column}
+.think-row{padding:24px 0;border-bottom:1px solid var(--line)}
+.think-row span{display:block;text-transform:uppercase;letter-spacing:.14em;font-size:10px;font-weight:800;color:var(--orange);margin-bottom:8px}
+.think-row strong{font-size:22px;line-height:1.4}
+footer{background:var(--ink);color:var(--cream);padding:85px 0}
+footer h2{color:var(--cream)}footer em{color:var(--orange);font-family:Georgia,serif;font-weight:400}
+.cta{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.button{display:inline-block;background:var(--orange);color:#fff;border-radius:999px;padding:16px 24px;font-weight:800}
+.note{margin-top:55px;font-size:11px;opacity:.55}
+@media(max-width:800px){
+ .wrap{width:min(100% - 28px,1180px)}.links{display:none}.hero{grid-template-columns:1fr;gap:42px;padding:50px 0 70px}.portrait{max-width:500px}.section-head{grid-template-columns:1fr;gap:8px}
+ section{padding:75px 0}.brand-grid{grid-template-columns:repeat(2,1fr)}.work.big,.work.small,.work.half{grid-column:span 12}.expertise,.thinking{grid-template-columns:1fr}.cta{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav"><a class="logo" href="#">NAMMON<span>.</span></a><div class="links"><a href="#brands">Brands</a><a href="#works">Works</a><a href="#expertise">Expertise</a><a href="#thinking">Content Thinking</a></div></div></nav>
+
+<main>
+<header class="wrap hero">
+ <div>
+   <div class="eyebrow">Digital Marketing Manager · Portfolio</div>
+   <h1>Ideas made<br><em>to connect.</em></h1>
+   <p class="lead">Hi, I'm Nammon — a digital marketer working across social media, content, biddable media and data analysis. I turn product stories into messages people can understand, remember and act on.</p>
+   <div class="tags"><span class="tag">SOCIAL MEDIA</span><span class="tag">CONTENT</span><span class="tag">BIDDABLE MEDIA</span><span class="tag">DATA & REPORTING</span></div>
+ </div>
+ <div class="portrait">
+   <img src="nammon-profile.jpg" alt="Nammon portrait">
+   <div class="sticker">CREATOR<br>×<br>EVERYDAY</div>
+ </div>
+</header>
+
+<section id="brands"><div class="wrap">
+ <div class="section-head"><div class="num">01</div><div><h2>Brands I've worked with.</h2><p class="intro">Across technology, home, lifestyle, property and consumer brands.</p></div></div>
+ <div class="brand-grid">
+   <div class="brand">Xiaomi</div><div class="brand">EZhome</div><div class="brand">Seagull</div><div class="brand">HP</div>
+   <div class="brand">Origin</div><div class="brand">KnightsBridge</div><div class="brand">Leia Clinic</div><div class="brand">+ more</div>
+ </div>
+</div></section>
+
+<section id="works"><div class="wrap">
+ <div class="section-head"><div class="num">02</div><div><h2>A few things I've helped bring to life.</h2><p class="intro">A curated selection rather than every post — each project represents a different kind of digital communication challenge.</p></div></div>
+ <div class="works">
+  <article class="work big orange"><div><div class="kicker">Technology · Social Content</div><h3>Xiaomi</h3><p>Product-led communication translated into accessible everyday use cases.</p></div><div class="ghost">01</div></article>
+  <article class="work small"><div><div class="kicker">Home · Always-on Content</div><h3>EZhome</h3><p>A consistent product content system across multiple home categories.</p></div><div class="ghost">02</div></article>
+  <article class="work half olive"><div><div class="kicker">Kitchen & Lifestyle</div><h3>Seagull</h3><p>From cookware to camping — different messages for different moments of use.</p></div><div class="ghost">03</div></article>
+  <article class="work half"><div><div class="kicker">Property · Lifestyle</div><h3>Origin / KnightsBridge</h3><p>Premium lifestyle communication for real-estate audiences.</p></div><div class="ghost">04</div></article>
+ </div>
+</div></section>
+
+<section id="expertise"><div class="wrap">
+ <div class="section-head"><div class="num">03</div><div><h2>Digital is more than a pretty feed.</h2><p class="intro">The work sits at the intersection of communication, distribution and learning from performance.</p></div></div>
+ <div class="expertise">
+  <div class="skill"><b>01</b><h3>Social Media</h3><p>Planning content for the right channel, audience and moment.</p></div>
+  <div class="skill"><b>02</b><h3>Content Writing</h3><p>Turning product benefits into clear messages and useful content angles.</p></div>
+  <div class="skill"><b>03</b><h3>Biddable Media</h3><p>Supporting paid media execution with communication built for digital environments.</p></div>
+  <div class="skill"><b>04</b><h3>Data Analysis</h3><p>Reading performance and reporting to understand what the content is telling us.</p></div>
+ </div>
+</div></section>
+
+<section id="thinking"><div class="wrap">
+ <div class="section-head"><div class="num">04</div><div><h2>Behind the artwork is the message.</h2><p class="intro">The visual is the output. This section focuses on the communication thinking behind it.</p></div></div>
+ <div class="thinking">
+  <div class="poster-placeholder"><small>FEATURED CONTENT THINKING</small><strong>Everyday<br>utility,<br>made clear.</strong><small>Replace this panel with a selected campaign artwork.</small></div>
+  <div class="think-list">
+   <div class="think-row"><span>Key message</span><strong>Make the product benefit immediately understandable.</strong></div>
+   <div class="think-row"><span>Content angle</span><strong>Move from product feature → real-life use case.</strong></div>
+   <div class="think-row"><span>Audience</span><strong>People looking for practical products that fit naturally into everyday life.</strong></div>
+   <div class="think-row"><span>Content type</span><strong>Product education · Social content · Promotional communication</strong></div>
+  </div>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="cta"><h2>Let's make something<br><em>worth noticing.</em></h2><a class="button" href="mailto:your-email@example.com">GET IN TOUCH →</a></div>
+ <div class="note">NAMMON · DIGITAL MARKETING PORTFOLIO · 2026</div>
+</div></footer>
+</body></html>
