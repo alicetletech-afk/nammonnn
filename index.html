@@ -263,6 +263,80 @@ footer em{font-style:normal;color:#E9A47C}
   footer .wrap{padding:28px}
   .more-grid{grid-template-columns:repeat(2,1fr)}
 }
+
+.content-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.content-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(57,50,40,.04);
+}
+.content-thumb{
+  aspect-ratio:1/1;
+  background:
+    linear-gradient(150deg,rgba(217,120,69,.18),rgba(94,101,78,.12)),
+    var(--cream);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:750;
+}
+.content-meta{padding:16px}
+.content-brand{
+  font-size:13px;
+  font-weight:850;
+  margin-bottom:8px;
+}
+.content-key{
+  font-size:13px;
+  line-height:1.55;
+  color:var(--ink);
+}
+.content-key b{color:var(--orange)}
+.content-toggle{
+  width:100%;
+  margin-top:12px;
+  padding:10px 0 0;
+  border:0;
+  border-top:1px solid var(--line);
+  background:transparent;
+  color:var(--olive);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:850;
+}
+.content-toggle .chev{transition:.2s}
+.content-card.open .content-toggle .chev{transform:rotate(180deg)}
+.content-extra{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .24s ease;
+}
+.content-extra > div{overflow:hidden}
+.content-card.open .content-extra{grid-template-rows:1fr}
+.extra-inner{
+  padding-top:10px;
+  font-size:12px;
+  line-height:1.55;
+  color:var(--muted);
+}
+.extra-inner p{margin:0 0 8px}
+.extra-inner b{color:var(--ink)}
+@media(max-width:1000px){.content-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.content-grid{grid-template-columns:1fr}}
+
 </style>
 
 </head>
@@ -319,15 +393,92 @@ footer em{font-style:normal;color:#E9A47C}
 </div></section>
 
 <section id="thinking"><div class="wrap">
- <div class="section-head"><div class="num">05</div><div><h2>Behind the artwork is the message.</h2><p class="intro">The visual is the output. This section focuses on the communication thinking behind it.</p></div></div>
- <div class="thinking">
-  <div class="poster-placeholder"><small>FEATURED CONTENT THINKING</small><strong>Everyday<br>utility,<br>made clear.</strong><small>Replace this panel with a selected campaign artwork.</small></div>
-  <div class="think-list">
-   <div class="think-row"><span>Key message</span><strong>Make the product benefit immediately understandable.</strong></div>
-   <div class="think-row"><span>Content angle</span><strong>Move from product feature → real-life use case.</strong></div>
-   <div class="think-row"><span>Audience</span><strong>People looking for practical products that fit naturally into everyday life.</strong></div>
-   <div class="think-row"><span>Content type</span><strong>Product education · Social content · Promotional communication</strong></div>
+ <div class="section-head">
+  <div class="num">05</div>
+  <div>
+   <h2>Content Thinking, one message at a time.</h2>
+   <p class="intro">Think of this section like a content shelf — quick to scan, with the key message visible first. Tap each card to see the deeper content angle and format.</p>
   </div>
+ </div>
+
+ <div class="content-grid">
+  <article class="content-card">
+   <div class="content-thumb">Selected artwork</div>
+   <div class="content-meta">
+    <div class="content-brand">Xiaomi :</div>
+    <div class="content-key"><b>Key Message:</b> Make smart technology feel useful in everyday life.</div>
+    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
+    <div class="content-extra"><div><div class="extra-inner">
+      <p><b>Content Angle:</b> Product benefit → practical daily use</p>
+      <p><b>Content Type:</b> Product Education / Social Content</p>
+    </div></div></div>
+   </div>
+  </article>
+
+  <article class="content-card">
+   <div class="content-thumb">Selected artwork</div>
+   <div class="content-meta">
+    <div class="content-brand">EZhome :</div>
+    <div class="content-key"><b>Key Message:</b> Useful home products that make routines easier.</div>
+    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
+    <div class="content-extra"><div><div class="extra-inner">
+      <p><b>Content Angle:</b> Everyday problem → simple product solution</p>
+      <p><b>Content Type:</b> Always-on Product Content</p>
+    </div></div></div>
+   </div>
+  </article>
+
+  <article class="content-card">
+   <div class="content-thumb">Selected artwork</div>
+   <div class="content-meta">
+    <div class="content-brand">Seagull :</div>
+    <div class="content-key"><b>Key Message:</b> One product, more ways to fit into real moments.</div>
+    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
+    <div class="content-extra"><div><div class="extra-inner">
+      <p><b>Content Angle:</b> Product versatility + lifestyle use case</p>
+      <p><b>Content Type:</b> Social Content / Product Highlight</p>
+    </div></div></div>
+   </div>
+  </article>
+
+  <article class="content-card">
+   <div class="content-thumb">Selected artwork</div>
+   <div class="content-meta">
+    <div class="content-brand">Origin :</div>
+    <div class="content-key"><b>Key Message:</b> Turn property features into a lifestyle people can imagine.</div>
+    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
+    <div class="content-extra"><div><div class="extra-inner">
+      <p><b>Content Angle:</b> Feature → lifestyle aspiration</p>
+      <p><b>Content Type:</b> Lifestyle / Real Estate Content</p>
+    </div></div></div>
+   </div>
+  </article>
+
+  <article class="content-card">
+   <div class="content-thumb">Selected artwork</div>
+   <div class="content-meta">
+    <div class="content-brand">HP :</div>
+    <div class="content-key"><b>Key Message:</b> Make product value easy to understand at a glance.</div>
+    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
+    <div class="content-extra"><div><div class="extra-inner">
+      <p><b>Content Angle:</b> Benefit-led product communication</p>
+      <p><b>Content Type:</b> Promotional / Retail Content</p>
+    </div></div></div>
+   </div>
+  </article>
+
+  <article class="content-card">
+   <div class="content-thumb">Selected artwork</div>
+   <div class="content-meta">
+    <div class="content-brand">Chaakan :</div>
+    <div class="content-key"><b>Key Message:</b> Keep the message friendly, clear and easy to relate to.</div>
+    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
+    <div class="content-extra"><div><div class="extra-inner">
+      <p><b>Content Angle:</b> Relatable communication around product or service benefits</p>
+      <p><b>Content Type:</b> Social Content</p>
+    </div></div></div>
+   </div>
+  </article>
  </div>
 </div></section>
 </main>
@@ -368,6 +519,17 @@ openBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+document.querySelectorAll('.content-toggle').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const card = btn.closest('.content-card');
+    card.classList.toggle('open');
+    btn.firstChild.textContent = card.classList.contains('open')
+      ? 'Hide content thinking '
+      : 'View content thinking ';
+  });
+});
+
 </script>
 
 </body></html>
