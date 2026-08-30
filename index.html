@@ -365,6 +365,14 @@ footer em{font-style:normal;color:#E9A47C}
   flex:0 0 auto;
 }
 
+
+/* V8: consistent 1:1 content artwork templates */
+.content-thumb{aspect-ratio:1 / 1;padding:0;position:relative;background:linear-gradient(145deg,#f4e3d7,#eee8dc)}
+.content-thumb>a{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;color:var(--muted);text-decoration:none}
+.content-thumb>a:has(img){padding:0}
+.content-thumb img{width:100%;height:100%;object-fit:cover;object-position:center}
+.brand.more:disabled{cursor:default;opacity:.72;background:#e2e4d8;color:var(--olive)}
+.pending-thumb{padding:18px;color:var(--muted);font-size:11px;text-align:center}
 </style>
 
 </head>
@@ -396,7 +404,7 @@ footer em{font-style:normal;color:#E9A47C}
    <div class="brand logo-cell"><img src="hp.png" alt="HP"></div>
    <div class="brand logo-cell"><img src="origin.png" alt="Origin / KnightsBridge"></div>
    <div class="brand logo-cell"><img src="chaakan.png" alt="Chaakan"></div>
-   <button class="brand more" id="openBrands" type="button">+ more ↗</button>
+   <button class="brand more" type="button" disabled aria-disabled="true">More brands · coming soon</button>
  </div>
 </div></section>
 
@@ -430,89 +438,18 @@ footer em{font-style:normal;color:#E9A47C}
  </div>
 
  <div class="content-grid">
-  <article class="content-card">
-   <div class="content-thumb"><a href="https://drive.google.com/file/d/1MA14kn-lzAMLkBkeIEDzEIw-CaWgL-hY/view" target="_blank" rel="noopener"><img src="https://drive.google.com/thumbnail?id=1MA14kn-lzAMLkBkeIEDzEIw-CaWgL-hY&sz=w1200" alt="Seagull clover glass content artwork"></a></div>
-   <div class="content-meta">
-    <div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div>
-    <div class="content-key"><b>Key Message:</b> Turn everyday drinkware into a character-led lifestyle item people want to collect.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ความโชคดีเป็นของฉันนะ~”</p><p><b>Content Angle:</b> Product versatility + lifestyle appeal</p><p><b>Content Type:</b> Social Content</p><a class="content-source" href="https://drive.google.com/drive/folders/1rgWel3bPtLxJV9RaVjheptDuMd73ND5k" target="_blank" rel="noopener">View source ↗</a></div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb"><a href="https://drive.google.com/file/d/1pSTzs66GSV9fW822VrZWL-ihI7UVDra9/view" target="_blank" rel="noopener"><img src="https://drive.google.com/thumbnail?id=1pSTzs66GSV9fW822VrZWL-ihI7UVDra9&sz=w1200" alt="Seagull scale content artwork"></a></div>
-   <div class="content-meta">
-    <div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div>
-    <div class="content-key"><b>Key Message:</b> Make a functional kitchen tool feel playful, approachable and relevant to everyday routines.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “นี่เราอยากชั่งน้ำหนักหรอ...วอดส์!”</p><p><b>Content Angle:</b> Everyday product → playful social hook</p><p><b>Content Type:</b> Social Content</p><a class="content-source" href="https://drive.google.com/file/d/1kP5SHlhkWnwYO6q3Nmp_vxjV8M9R06lW/view" target="_blank" rel="noopener">View source ↗</a></div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb"><a href="https://www.facebook.com/share/p/1BoM62xPgn/" target="_blank" rel="noopener">Artwork on original post ↗</a></div>
-   <div class="content-meta">
-    <div class="content-brand">XIAOMI</div><div class="content-campaign">Smarthome Electronics</div>
-    <div class="content-key"><b>Key Message:</b> Help people choose a Smart TV by connecting product benefits with everyday entertainment needs.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ถอยทีวีใหม่ทั้งที ต้องเลือกให้เป๊ะ! TV CHECK!”</p><p><b>Content Angle:</b> Product benefit → Everyday lifestyle</p><p><b>Audience:</b> Smarthome living / tech for everyday life</p><p><b>Content Type:</b> Social Content</p><a class="content-source" href="https://www.facebook.com/share/p/1BoM62xPgn/" target="_blank" rel="noopener">View original post ↗</a></div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb"><a href="https://www.facebook.com/share/p/191jv5Y4D1/" target="_blank" rel="noopener">Artwork on original post ↗</a></div>
-   <div class="content-meta">
-    <div class="content-brand">CHAAKAN</div><div class="content-campaign">Fashion · Footwear</div>
-    <div class="content-key"><b>Key Message:</b> Position footwear innovation as an everyday answer to foot pain and fatigue.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ทน ปวดเท้า เท้าล้า! ทำไมดิ้~”</p><p><b>Content Angle:</b> Consumer pain point → product innovation</p><p><b>Content Type:</b> Social Content</p><a class="content-source" href="https://www.facebook.com/share/p/191jv5Y4D1/" target="_blank" rel="noopener">View original post ↗</a></div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb"><a href="https://www.facebook.com/share/p/198PWHpYFT/" target="_blank" rel="noopener">Artwork on original post ↗</a></div>
-   <div class="content-meta">
-    <div class="content-brand">ORIGIN PROPERTY</div><div class="content-campaign">Real Estate · Condominium</div>
-    <div class="content-key"><b>Key Message:</b> Turn high-ceiling condominium features into an aspirational lifestyle people can picture themselves living.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “เหนือกว่าแค่ที่อยู่อาศัย คือการใช้ชีวิตที่เต็มไปด้วยความสุข”</p><p><b>Content Angle:</b> Condominium Lifestyle</p><p><b>Content Type:</b> Social Content</p><a class="content-source" href="https://www.facebook.com/share/p/198PWHpYFT/" target="_blank" rel="noopener">View original post ↗</a></div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb"><a href="https://www.facebook.com/share/p/19HXS7V1Q2/" target="_blank" rel="noopener">Artwork on original post ↗</a></div>
-   <div class="content-meta">
-    <div class="content-brand">JSTARMAX & TIRES</div><div class="content-campaign">Driving · Max & Tires</div>
-    <div class="content-key"><b>Key Message:</b> Translate tire performance into a timely safety benefit for everyday driving in rainy conditions.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ช่วงนี้ฝนตกบ่อย ต้องเลือกยางให้ดี~”</p><p><b>Content Angle:</b> Product feature → seasonal driving need</p><p><b>Content Type:</b> Product Education / Promotional</p><a class="content-source" href="https://www.facebook.com/share/p/19HXS7V1Q2/" target="_blank" rel="noopener">View original post ↗</a></div></div></div>
-   </div>
-  </article>
+  <article class="content-card"><div class="content-thumb"><img src="assets/works/seagull-electric-pot.jpg" alt="Seagull electric pot content artwork"></div><div class="content-meta"><div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div><div class="content-key"><b>Key Message:</b> Make a multi-purpose electric pot feel flexible and useful for everyday cooking.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “หม้อด้ามไฟฟ้าแบบก้ำกึ่ง ชอบกึ่งไหน ทำแล้วชอบอยู่ดี!”</p><p><b>Content Angle:</b> Product versatility → everyday cooking</p><p><b>Content Type:</b> Product Education / Promotional</p></div></div></div></div></article>
+  <article class="content-card"><div class="content-thumb"><img src="assets/works/seagull-smoothie.jpg" alt="Seagull smoothie drinkware content artwork"></div><div class="content-meta"><div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div><div class="content-key"><b>Key Message:</b> Turn drinkware into part of an easy, portable smoothie routine.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “EASY TO MIX, SMOOTHIES ปั่นสมูทตี้ที่ไหนก็ดรั้ย~”</p><p><b>Content Angle:</b> Everyday use case → lifestyle convenience</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
+  <article class="content-card"><div class="content-thumb"><img src="assets/works/seagull-scale.jpg" alt="Seagull kitchen scale content artwork"></div><div class="content-meta"><div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div><div class="content-key"><b>Key Message:</b> Make a functional kitchen tool feel playful and approachable in everyday routines.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “นี่เราอยากชั่งน้ำหนักหรอ...วอดส์!”</p><p><b>Content Angle:</b> Everyday product → playful social hook</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
+  <article class="content-card"><div class="content-thumb"><img src="assets/works/seagull-blooming.jpg" alt="Seagull Blooming drinkware content artwork"></div><div class="content-meta"><div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div><div class="content-key"><b>Key Message:</b> Give everyday drinkware a seasonal lifestyle mood that feels collectible.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “BLOOMING IN SUMMER”</p><p><b>Content Angle:</b> Seasonal mood → product lifestyle</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
+  <article class="content-card"><div class="content-thumb pending-thumb">Artwork from original post</div><div class="content-meta"><div class="content-brand">XIAOMI</div><div class="content-campaign">Smarthome Electronics</div><div class="content-key"><b>Key Message:</b> Help people choose a Smart TV by connecting product benefits with everyday entertainment needs.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ถอยทีวีใหม่ทั้งที ต้องเลือกให้เป๊ะ! TV CHECK!”</p><p><b>Content Angle:</b> Product benefit → Everyday lifestyle</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
+  <article class="content-card"><div class="content-thumb pending-thumb">Artwork from original post</div><div class="content-meta"><div class="content-brand">CHAAKAN</div><div class="content-campaign">Fashion · Footwear</div><div class="content-key"><b>Key Message:</b> Position footwear innovation as an everyday answer to foot pain and fatigue.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ทน ปวดเท้า เท้าล้า! ทำไมดิ้~”</p><p><b>Content Angle:</b> Consumer pain point → product innovation</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
+  <article class="content-card"><div class="content-thumb pending-thumb">Artwork from original post</div><div class="content-meta"><div class="content-brand">ORIGIN PROPERTY</div><div class="content-campaign">Real Estate · Condominium</div><div class="content-key"><b>Key Message:</b> Turn high-ceiling condominium features into an aspirational lifestyle people can picture themselves living.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “เหนือกว่าแค่ที่อยู่อาศัย คือการใช้ชีวิตที่เต็มไปด้วยความสุข”</p><p><b>Content Angle:</b> Condominium Lifestyle</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
+  <article class="content-card"><div class="content-thumb pending-thumb">Artwork from original post</div><div class="content-meta"><div class="content-brand">JSTARMAX & TIRES</div><div class="content-campaign">Driving · Max & Tires</div><div class="content-key"><b>Key Message:</b> Translate tire performance into a timely safety benefit for everyday rainy-season driving.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ช่วงนี้ฝนตกบ่อย ต้องเลือกยางให้ดี~”</p><p><b>Content Angle:</b> Product feature → seasonal driving need</p><p><b>Content Type:</b> Product Education / Promotional</p></div></div></div></div></article>
  </div>
 </div></section>
 </main>
 
-
-<div class="modal" id="brandsModal" aria-hidden="true">
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="brandsModalTitle">
-    <div class="modal-top">
-      <div>
-        <h3 id="brandsModalTitle">More brands I've worked with.</h3>
-        <p>Additional brand experience — logos can be added here as the portfolio is finalized.</p>
-      </div>
-      <button class="close" id="closeBrands" type="button" aria-label="Close">×</button>
-    </div>
-    <div class="more-grid">
-      <div class="more-item placeholder">Brand logo</div>
-      <div class="more-item placeholder">Brand logo</div>
-      <div class="more-item placeholder">Brand logo</div>
-      <div class="more-item placeholder">Brand logo</div>
-      <div class="more-item placeholder">Brand logo</div>
-      <div class="more-item placeholder">Brand logo</div>
-    </div>
-  </div>
-</div>
 
 <footer><div class="wrap">
  <div class="cta"><h2>Let's make something<br><em>worth noticing.</em></h2><a class="button" href="mailto:your-email@example.com">GET IN TOUCH →</a></div>
@@ -520,15 +457,10 @@ footer em{font-style:normal;color:#E9A47C}
 </div></footer>
 
 <script>
-const modal = document.getElementById('brandsModal');
 const openBtn = document.getElementById('openBrands');
 const closeBtn = document.getElementById('closeBrands');
-function openModal(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
 openBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
-modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
 document.querySelectorAll('.content-toggle').forEach(btn=>{
   btn.addEventListener('click', ()=>{
