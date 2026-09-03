@@ -290,6 +290,11 @@ footer em{font-style:normal;color:#E9A47C}
   font-size:12px;
   font-weight:750;
 }
+.content-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.empty-state{
+  grid-column:1/-1;padding:28px;border:1px dashed var(--line);border-radius:18px;
+  color:var(--muted);text-align:center;font-size:14px;background:rgba(255,253,249,.55)
+}
 .content-meta{padding:16px}
 .content-brand{
   font-size:13px;
@@ -383,35 +388,17 @@ footer em{font-style:normal;color:#E9A47C}
 
 <section id="brands"><div class="wrap">
  <div class="section-head"><div class="num">02</div><div><h2>Brands I've worked with.</h2><p class="intro">Across technology, home, lifestyle, property and consumer brands.</p></div></div>
- <div class="brand-grid">
-   <div class="brand logo-cell"><img src="xiaomi.png" alt="Xiaomi"></div>
-   <div class="brand logo-cell"><img src="ezhome.png" alt="EZhome"></div>
-   <div class="brand logo-cell"><img src="seagull.png" alt="Seagull"></div>
-   <div class="brand logo-cell"><img src="hp.png" alt="HP"></div>
-   <div class="brand logo-cell"><img src="origin.png" alt="Origin / KnightsBridge"></div>
-   <div class="brand logo-cell"><img src="chaakan.png" alt="Chaakan"></div>
-   <button class="brand more" id="openBrands" type="button">+ more ↗</button>
- </div>
+ <div class="brand-grid" id="brandGrid" aria-live="polite"></div>
 </div></section>
 
 <section id="works"><div class="wrap">
  <div class="section-head"><div class="num">03</div><div><h2>Selected work, different kinds of stories.</h2><p class="intro">A small selection of work across different brands, products and audiences.</p></div></div>
- <div class="works">
-  <article class="work big orange"><div><div class="kicker">Technology · Social Content</div><h3>Xiaomi</h3><p>Product-led communication translated into accessible everyday use cases.</p></div><div class="ghost">01</div></article>
-  <article class="work small"><div><div class="kicker">Home · Always-on Content</div><h3>EZhome</h3><p>A consistent product content system across multiple home categories.</p></div><div class="ghost">02</div></article>
-  <article class="work half olive"><div><div class="kicker">Kitchen & Lifestyle</div><h3>Seagull</h3><p>From cookware to camping — different messages for different moments of use.</p></div><div class="ghost">03</div></article>
-  <article class="work half"><div><div class="kicker">Property · Lifestyle</div><h3>Origin / KnightsBridge</h3><p>Premium lifestyle communication for real-estate audiences.</p></div><div class="ghost">04</div></article>
- </div>
+ <div class="works" id="worksGrid" aria-live="polite"></div>
 </div></section>
 
 <section id="expertise"><div class="wrap">
  <div class="section-head"><div class="num">04</div><div><h2>Digital is more than a pretty feed.</h2><p class="intro">The work sits at the intersection of communication, distribution and learning from performance.</p></div></div>
- <div class="expertise">
-  <div class="skill"><b>01</b><h3>Social Media</h3><p>Planning content for the right channel, audience and moment.</p></div>
-  <div class="skill"><b>02</b><h3>Content Writing</h3><p>Turning product benefits into clear messages and useful content angles.</p></div>
-  <div class="skill"><b>03</b><h3>Biddable Media</h3><p>Supporting paid media execution with communication built for digital environments.</p></div>
-  <div class="skill"><b>04</b><h3>Data Analysis</h3><p>Reading performance and reporting to understand what the content is telling us.</p></div>
- </div>
+ <div class="expertise" id="skillsGrid" aria-live="polite"></div>
 </div></section>
 
 <section id="thinking"><div class="wrap">
@@ -423,85 +410,7 @@ footer em{font-style:normal;color:#E9A47C}
   </div>
  </div>
 
- <div class="content-grid">
-  <article class="content-card">
-   <div class="content-thumb">Selected artwork</div>
-   <div class="content-meta">
-    <div class="content-brand">Xiaomi :</div>
-    <div class="content-key"><b>Key Message:</b> Make smart technology feel useful in everyday life.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner">
-      <p><b>Content Angle:</b> Product benefit → practical daily use</p>
-      <p><b>Content Type:</b> Product Education / Social Content</p>
-    </div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb">Selected artwork</div>
-   <div class="content-meta">
-    <div class="content-brand">EZhome :</div>
-    <div class="content-key"><b>Key Message:</b> Useful home products that make routines easier.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner">
-      <p><b>Content Angle:</b> Everyday problem → simple product solution</p>
-      <p><b>Content Type:</b> Always-on Product Content</p>
-    </div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb">Selected artwork</div>
-   <div class="content-meta">
-    <div class="content-brand">Seagull :</div>
-    <div class="content-key"><b>Key Message:</b> One product, more ways to fit into real moments.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner">
-      <p><b>Content Angle:</b> Product versatility + lifestyle use case</p>
-      <p><b>Content Type:</b> Social Content / Product Highlight</p>
-    </div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb">Selected artwork</div>
-   <div class="content-meta">
-    <div class="content-brand">Origin :</div>
-    <div class="content-key"><b>Key Message:</b> Turn property features into a lifestyle people can imagine.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner">
-      <p><b>Content Angle:</b> Feature → lifestyle aspiration</p>
-      <p><b>Content Type:</b> Lifestyle / Real Estate Content</p>
-    </div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb">Selected artwork</div>
-   <div class="content-meta">
-    <div class="content-brand">HP :</div>
-    <div class="content-key"><b>Key Message:</b> Make product value easy to understand at a glance.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner">
-      <p><b>Content Angle:</b> Benefit-led product communication</p>
-      <p><b>Content Type:</b> Promotional / Retail Content</p>
-    </div></div></div>
-   </div>
-  </article>
-
-  <article class="content-card">
-   <div class="content-thumb">Selected artwork</div>
-   <div class="content-meta">
-    <div class="content-brand">Chaakan :</div>
-    <div class="content-key"><b>Key Message:</b> Keep the message friendly, clear and easy to relate to.</div>
-    <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
-    <div class="content-extra"><div><div class="extra-inner">
-      <p><b>Content Angle:</b> Relatable communication around product or service benefits</p>
-      <p><b>Content Type:</b> Social Content</p>
-    </div></div></div>
-   </div>
-  </article>
- </div>
+ <div class="content-grid" id="contentGrid" aria-live="polite"></div>
 </div></section>
 </main>
 
@@ -531,25 +440,137 @@ footer em{font-style:normal;color:#E9A47C}
  <div class="note">NAMMON · DIGITAL MARKETING PORTFOLIO · 2026</div>
 </div></footer>
 
-<script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+// A publishable key is designed for browser use. Database policies still control access.
+const supabase = createClient(
+  'https://birsqtmsddfgmqriatod.supabase.co',
+  'sb_publishable_m527z_lPcafRBA6y-5l_vA_FNq2l28X'
+);
 const modal = document.getElementById('brandsModal');
-const openBtn = document.getElementById('openBrands');
 const closeBtn = document.getElementById('closeBrands');
 function openModal(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
 function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-openBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
-document.querySelectorAll('.content-toggle').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const card = btn.closest('.content-card');
-    card.classList.toggle('open');
-    btn.firstChild.textContent = card.classList.contains('open')
-      ? 'Hide content thinking '
-      : 'View content thinking ';
-  });
+document.addEventListener('click', event => {
+  const brandButton = event.target.closest('#openBrands');
+  if (brandButton) openModal();
+
+  const button = event.target.closest('.content-toggle');
+  if (!button) return;
+  const card = button.closest('.content-card');
+  card.classList.toggle('open');
+  button.firstChild.textContent = card.classList.contains('open')
+    ? 'Hide content thinking '
+    : 'View content thinking ';
+});
+
+const escapeHTML = value => String(value ?? '')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+const empty = text => `<div class="empty-state">${escapeHTML(text)}</div>`;
+const extraRow = (label, value) => value
+  ? `<p><b>${escapeHTML(label)}:</b> ${escapeHTML(value)}</p>` : '';
+
+function renderBrands(brands) {
+  const grid = document.getElementById('brandGrid');
+  const modalGrid = document.querySelector('.more-grid');
+  if (!brands.length) {
+    grid.innerHTML = empty('Brands will appear here once they are added in CMS.');
+    modalGrid.innerHTML = '';
+    return;
+  }
+  const logo = brand => brand.logo_url
+    ? `<img src="${escapeHTML(brand.logo_url)}" alt="${escapeHTML(brand.name)} logo">`
+    : `<span>${escapeHTML(brand.name)}</span>`;
+  const card = brand => `<div class="brand logo-cell">${logo(brand)}</div>`;
+  const visibleCards = brands.slice(0, 6).map(card).join('');
+  grid.innerHTML = visibleCards + (brands.length > 6
+    ? '<button class="brand more" id="openBrands" type="button">+ more ↗</button>' : '');
+  modalGrid.innerHTML = brands.slice(6).map(card).join('');
+}
+
+function renderWorks(works) {
+  const grid = document.getElementById('worksGrid');
+  if (!works.length) {
+    grid.innerHTML = empty('Selected work will appear here once it is added in CMS.');
+    return;
+  }
+  const styles = ['orange', '', 'olive', ''];
+  grid.innerHTML = works.map((work, index) => {
+    const brand = work.brands?.name || 'Selected work';
+    const title = work.title || brand;
+    return `<article class="work ${styles[index % styles.length]}">
+      <div><div class="kicker">${escapeHTML(work.tag || '')}</div><h3>${escapeHTML(title)}</h3>
+      <p>${escapeHTML(work.description || '')}</p></div>
+      <div class="ghost">${String(index + 1).padStart(2, '0')}</div>
+    </article>`;
+  }).join('');
+}
+
+function renderSkills(skills) {
+  const grid = document.getElementById('skillsGrid');
+  grid.innerHTML = skills.length ? skills.map((skill, index) => `<div class="skill">
+    <b>${String(index + 1).padStart(2, '0')}</b><h3>${escapeHTML(skill.title)}</h3>
+    <p>${escapeHTML(skill.description || '')}</p></div>`).join('')
+    : empty('Skills will appear here once they are added in CMS.');
+}
+
+function renderContent(items) {
+  const grid = document.getElementById('contentGrid');
+  if (!items.length) {
+    grid.innerHTML = empty('Content thinking will appear here once it is added in CMS.');
+    return;
+  }
+  grid.innerHTML = items.map(item => {
+    const artwork = item.artwork_url
+      ? `<img src="${escapeHTML(item.artwork_url)}" alt="${escapeHTML(item.campaign_name || item.brands?.name || 'Campaign artwork')}">`
+      : 'Selected artwork';
+    const detail = [
+      extraRow('Campaign', item.campaign_name),
+      extraRow('Content Angle', item.content_angle),
+      extraRow('Audience', item.audience),
+      extraRow('Content Type', item.content_type),
+      extraRow('Objective', item.objective),
+      extraRow('Role / Responsibility', item.role_responsibility),
+      extraRow('Result / Metric', item.result_metric),
+      extraRow('Notes', item.notes)
+    ].join('');
+    return `<article class="content-card"><div class="content-thumb">${artwork}</div><div class="content-meta">
+      <div class="content-brand">${escapeHTML(item.brands?.name || 'Content Thinking')} :</div>
+      <div class="content-key"><b>Key Message:</b> ${escapeHTML(item.key_message || '')}</div>
+      <button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button>
+      <div class="content-extra"><div><div class="extra-inner">${detail || '<p>Details coming soon.</p>'}</div></div></div>
+    </div></article>`;
+  }).join('');
+}
+
+async function loadPortfolio() {
+  const [brandsResult, worksResult, skillsResult, contentResult] = await Promise.all([
+    supabase.from('brands').select('id, name, logo_url, sort_order').eq('is_visible', true).order('sort_order', { ascending: true }),
+    supabase.from('works').select('id, title, tag, description, sort_order, brands(name)').eq('is_visible', true).order('sort_order', { ascending: true }),
+    supabase.from('skills').select('id, title, description, sort_order').eq('is_visible', true).order('sort_order', { ascending: true }),
+    supabase.from('content_items').select('id, campaign_name, artwork_url, key_message, content_angle, audience, content_type, objective, role_responsibility, result_metric, notes, sort_order, brands(name)').eq('is_visible', true).order('sort_order', { ascending: true })
+  ]);
+  const results = [brandsResult, worksResult, skillsResult, contentResult];
+  const error = results.find(result => result.error)?.error;
+  if (error) throw error;
+  renderBrands(brandsResult.data || []);
+  renderWorks(worksResult.data || []);
+  renderSkills(skillsResult.data || []);
+  renderContent(contentResult.data || []);
+}
+
+loadPortfolio().catch(error => {
+  console.error('Could not load portfolio content:', error.message);
+  document.getElementById('brandGrid').innerHTML = empty('Unable to load brands right now.');
+  document.getElementById('worksGrid').innerHTML = empty('Unable to load selected work right now.');
+  document.getElementById('skillsGrid').innerHTML = empty('Unable to load skills right now.');
+  document.getElementById('contentGrid').innerHTML = empty('Unable to load content thinking right now.');
 });
 
 </script>
