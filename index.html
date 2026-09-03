@@ -1,477 +1,509 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="th">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nammon — Digital Marketing Portfolio</title>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAMMON Portfolio Manager</title>
 <style>
 :root{
-  --cream:#F8F3EA;
-  --paper:#FFFDF9;
-  --orange:#D97845;
-  --orange-soft:#F3D5C3;
-  --olive:#5E654E;
-  --olive-soft:#DDE1D3;
-  --ink:#2D2B27;
-  --muted:#77736C;
-  --line:#E7E0D5;
-  --shadow:0 16px 45px rgba(57,50,40,.08);
+  --bg:#f7f2ec;
+  --panel:#fffdf9;
+  --soft:#fbf6ef;
+  --peach:#f3d7c7;
+  --peach2:#f8e9df;
+  --olive:#dfe5d2;
+  --text:#312b27;
+  --muted:#7c7168;
+  --line:#eadfd5;
+  --accent:#e89a70;
+  --danger:#b65f5f;
+  --shadow:0 18px 50px rgba(62,47,37,.08);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
   margin:0;
+  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:
-    radial-gradient(circle at 12% 8%,rgba(217,120,69,.08),transparent 24%),
-    radial-gradient(circle at 88% 15%,rgba(94,101,78,.08),transparent 22%),
-    var(--cream);
-  color:var(--ink);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    radial-gradient(circle at 10% 10%,rgba(243,215,199,.35),transparent 26%),
+    radial-gradient(circle at 90% 22%,rgba(223,229,210,.35),transparent 24%),
+    var(--bg);
+  color:var(--text);
 }
-a{color:inherit;text-decoration:none}
-button{font:inherit}
-.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.app{max-width:1240px;margin:0 auto;padding:24px}
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr);gap:20px;align-items:start}
+.panel{
+  background:rgba(255,253,249,.9);
+  border:1px solid var(--line);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(14px);
+}
+.sidebar{padding:16px;position:sticky;top:20px}
+.logo-area{padding:8px 8px 18px}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.brand-title{font-size:19px;font-weight:800;margin-top:4px}
+.greeting{
+  margin-top:14px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:linear-gradient(145deg,#fff9f3,#f7e9df);
+  font-size:13px;
+  line-height:1.6;
+  color:#62584f;
+}
+.nav{display:grid;gap:8px}
+.nav button{
+  border:0;
+  border-radius:16px;
+  padding:12px 14px;
+  text-align:left;
+  background:transparent;
+  color:var(--text);
+  font-weight:700;
+}
+.nav button.active{background:var(--text);color:#fff}
+.nav button:hover:not(.active){background:var(--soft)}
 
-nav{
-  position:sticky;top:14px;z-index:30;
-  width:min(1120px,calc(100% - 28px));
-  margin:14px auto 0;
-  background:rgba(255,253,249,.86);
-  border:1px solid rgba(231,224,213,.9);
-  box-shadow:0 8px 30px rgba(57,50,40,.06);
-  backdrop-filter:blur(15px);
+.main{padding:28px}
+.topbar{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.kicker{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+h1{font-size:32px;line-height:1.1;margin:10px 0 8px}
+.sub{color:var(--muted);font-size:14px;line-height:1.6;max-width:660px}
+.btn{
+  border:1px solid var(--line);
+  background:#fffaf5;
+  color:var(--text);
   border-radius:999px;
+  padding:11px 15px;
+  font-weight:700;
 }
-.nav{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
-.logo{font-weight:850;letter-spacing:-.035em;font-size:19px}
-.logo span{display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:50%;margin-left:3px}
-.links{display:flex;gap:8px;font-size:12px;font-weight:700}
-.links a{padding:9px 13px;border-radius:999px;color:var(--muted)}
-.links a:hover{background:var(--orange-soft);color:var(--ink)}
+.btn.primary{background:var(--text);border-color:var(--text);color:#fff}
+.btn.small{font-size:12px;padding:8px 11px}
+.btn.danger{color:var(--danger)}
 
-.hero{
-  min-height:760px;
-  display:grid;
-  grid-template-columns:1fr .92fr;
-  gap:72px;
-  align-items:center;
-  padding:74px 0 84px;
-}
-.hero-copy{max-width:620px}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:8px 12px;border:1px solid var(--line);
-  background:rgba(255,255,255,.52);border-radius:999px;
-  font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--olive)
-}
-.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}
-h1{
-  font-size:clamp(52px,7vw,86px);
-  line-height:.97;letter-spacing:-.06em;
-  margin:22px 0 24px;font-weight:760;max-width:760px
-}
-h1 em{font-style:normal;color:var(--orange);font-weight:760}
-.lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:590px}
-.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
-.tag{
-  padding:9px 13px;border-radius:12px;
-  background:var(--paper);border:1px solid var(--line);
-  font-size:11px;font-weight:750;box-shadow:0 5px 16px rgba(57,50,40,.04)
-}
-.portrait-wrap{position:relative;padding:22px 0 22px 22px}
-.portrait{
-  position:relative;background:var(--paper);padding:12px;border:1px solid var(--line);
-  border-radius:34px;box-shadow:var(--shadow);transform:rotate(1.4deg)
-}
-.portrait:before{
-  content:"";position:absolute;width:180px;height:180px;border-radius:42px;
-  background:var(--orange-soft);left:-28px;bottom:-28px;z-index:-1;transform:rotate(-9deg)
-}
-.portrait img{
-  width:100%;height:min(610px,65vh);object-fit:cover;object-position:center 20%;
-  display:block;border-radius:24px;filter:saturate(.9)
-}
-.sticker{
-  position:absolute;right:-18px;top:42px;
-  background:var(--olive);color:white;
-  border-radius:18px;padding:13px 15px;
-  text-align:left;font-size:11px;line-height:1.4;font-weight:800;
-  box-shadow:0 10px 25px rgba(57,50,40,.15);transform:rotate(5deg)
-}
-
-section{padding:86px 0}
-.section-head{
-  display:grid;grid-template-columns:54px 1fr;gap:18px;
-  align-items:start;margin-bottom:34px
-}
-.num{
-  width:42px;height:42px;border-radius:14px;
-  background:var(--orange-soft);display:grid;place-items:center;
-  font-size:13px;font-weight:850;color:var(--orange)
-}
-h2{font-size:clamp(34px,4vw,54px);line-height:1.04;letter-spacing:-.045em;margin:0;max-width:820px}
-.intro{font-size:16px;line-height:1.7;color:var(--muted);max-width:680px;margin:12px 0 0}
-
-#brands .wrap,#works .wrap,#expertise .wrap,#thinking .wrap{
-  background:rgba(255,253,249,.48);
-  border:1px solid rgba(231,224,213,.82);
-  border-radius:32px;
-  padding:42px;
-  box-shadow:0 12px 38px rgba(57,50,40,.035)
-}
-
-.brand-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:12px
-}
-.brand{
-  min-height:116px;
-  border-radius:18px;background:var(--paper);
+.view{display:none;margin-top:26px}
+.view.active{display:block}
+.grid{display:grid;gap:14px}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card,.skill-card,.form-card{
+  background:var(--soft);
   border:1px solid var(--line);
-  display:grid;place-items:center;padding:22px;
-  transition:.22s
+  border-radius:22px;
+  padding:16px;
 }
-.brand:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(57,50,40,.06)}
-.brand.logo-cell img{width:100%;height:58px;object-fit:contain;display:block}
-.brand.more{
-  cursor:pointer;background:var(--olive-soft);border-color:transparent;
-  color:var(--olive);font-size:14px;font-weight:850
-}
-.brand.more:hover{background:var(--olive);color:white}
-
-.works{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:16px
-}
-.work{
-  min-height:310px;padding:26px;border-radius:24px;
-  background:var(--paper);border:1px solid var(--line);
-  display:flex;flex-direction:column;justify-content:space-between;
-  overflow:hidden;transition:.22s;position:relative
-}
-.work:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.work.big,.work.small,.work.half{grid-column:auto}
-.work.orange{background:#F0C7AE;color:var(--ink)}
-.work.olive{background:#CFD5C2;color:var(--ink)}
-.work .kicker{
-  display:inline-flex;width:max-content;padding:7px 10px;border-radius:999px;
-  background:rgba(255,255,255,.52);font-size:10px;text-transform:uppercase;
-  letter-spacing:.09em;font-weight:850
-}
-.work h3{font-size:34px;letter-spacing:-.04em;margin:14px 0 8px}
-.work p{max-width:420px;line-height:1.6;color:rgba(45,43,39,.72)}
-.work .ghost{
-  position:absolute;right:20px;bottom:12px;
-  font-size:72px;font-weight:850;letter-spacing:-.08em;opacity:.08
-}
-
-.expertise{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:12px
-}
-.skill{
-  background:var(--paper);border:1px solid var(--line);
-  border-radius:20px;padding:22px;min-height:210px
-}
-.skill b{
-  width:34px;height:34px;display:grid;place-items:center;border-radius:11px;
-  background:var(--orange-soft);color:var(--orange);font-size:11px
-}
-.skill h3{font-size:20px;margin:30px 0 8px;letter-spacing:-.02em}
-.skill p{color:var(--muted);line-height:1.55;margin:0;font-size:14px}
-
-.thinking{
-  display:grid;grid-template-columns:.9fr 1.1fr;gap:20px
-}
-.poster-placeholder{
-  min-height:440px;border-radius:24px;padding:26px;
-  background:
-    linear-gradient(165deg,rgba(94,101,78,.94),rgba(94,101,78,.75)),
-    var(--olive);
-  color:white;display:flex;flex-direction:column;justify-content:space-between;
-  overflow:hidden;position:relative
-}
-.poster-placeholder:after{
-  content:"";position:absolute;width:230px;height:230px;border-radius:50%;
-  background:rgba(217,120,69,.48);right:-90px;bottom:-90px
-}
-.poster-placeholder strong{font-size:46px;line-height:1.03;letter-spacing:-.045em;max-width:350px;position:relative;z-index:1}
-.poster-placeholder small{opacity:.8;position:relative;z-index:1}
-.think-list{display:flex;flex-direction:column;gap:10px}
-.think-row{
-  padding:18px 20px;border:1px solid var(--line);border-radius:17px;background:var(--paper)
-}
-.think-row span{
-  display:block;text-transform:uppercase;letter-spacing:.1em;
-  font-size:9px;font-weight:850;color:var(--orange);margin-bottom:6px
-}
-.think-row strong{font-size:17px;line-height:1.45}
-
-footer{padding:34px 0 54px}
-footer .wrap{
-  background:var(--ink);color:var(--cream);border-radius:30px;padding:44px
-}
-footer h2{color:var(--cream);font-size:clamp(34px,5vw,56px)}
-footer em{font-style:normal;color:#E9A47C}
-.cta{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
-.button{
-  display:inline-flex;align-items:center;justify-content:center;
-  background:var(--orange);color:#fff;border-radius:14px;
-  padding:14px 18px;font-weight:850;font-size:12px
-}
-.note{margin-top:34px;font-size:10px;opacity:.45}
-
-/* Modal */
-.modal{
-  position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
-  padding:24px;background:rgba(45,43,39,.42);backdrop-filter:blur(8px)
-}
-.modal.open{display:flex}
-.modal-card{
-  width:min(780px,100%);max-height:82vh;overflow:auto;background:var(--paper);
-  border-radius:26px;padding:28px;box-shadow:0 30px 90px rgba(0,0,0,.18)
-}
-.modal-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:24px}
-.modal-top h3{font-size:28px;letter-spacing:-.035em;margin:0}
-.modal-top p{color:var(--muted);margin:7px 0 0;font-size:14px}
-.close{
-  width:40px;height:40px;border:1px solid var(--line);border-radius:12px;
-  background:var(--cream);font-size:20px;cursor:pointer
-}
-.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.more-item{
-  min-height:104px;border:1px dashed #D7CFC2;border-radius:16px;
-  display:grid;place-items:center;padding:16px;text-align:center;
-  font-weight:750;background:var(--cream);color:var(--muted);font-size:13px
-}
-
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;gap:38px;padding-top:55px}
-  .portrait-wrap{max-width:520px}
-  .expertise{grid-template-columns:repeat(2,1fr)}
-  .thinking{grid-template-columns:1fr}
-}
-@media(max-width:700px){
-  .wrap{width:min(100% - 24px,1120px)}
-  nav{width:calc(100% - 20px);top:10px;margin-top:10px}.links{display:none}
-  .hero{min-height:auto;padding-bottom:64px}
-  #brands .wrap,#works .wrap,#expertise .wrap,#thinking .wrap{padding:24px;border-radius:24px}
-  .section-head{grid-template-columns:1fr;gap:10px}
-  .brand-grid{grid-template-columns:repeat(2,1fr)}
-  .works{grid-template-columns:1fr}
-  .expertise{grid-template-columns:1fr}
-  .cta{align-items:flex-start;flex-direction:column}
-  footer .wrap{padding:28px}
-  .more-grid{grid-template-columns:repeat(2,1fr)}
-}
-
-.content-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-.content-card{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 8px 24px rgba(57,50,40,.04);
-}
-.content-thumb{
-  aspect-ratio:1/1;
-  background:
-    linear-gradient(150deg,rgba(217,120,69,.18),rgba(94,101,78,.12)),
-    var(--cream);
+.logo{
+  height:122px;
+  border-radius:18px;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:18px;
-  text-align:center;
-  color:var(--muted);
-  font-size:12px;
-  font-weight:750;
   overflow:hidden;
-}
-.content-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.content-thumb a{width:100%;height:100%;display:block}
-.content-campaign{font-size:11px;line-height:1.35;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:-2px 0 8px}
-.content-source{display:inline-block;margin-top:10px;font-size:11px;font-weight:800;color:var(--olive);text-decoration:none}
-.content-source:hover{text-decoration:underline}
-.content-meta{padding:16px}
-.content-brand{
+  background:linear-gradient(145deg,#efe2d7,#fbf3ec);
+  color:#9c897b;
   font-size:13px;
-  font-weight:850;
-  margin-bottom:8px;
+  font-weight:800;
 }
-.content-key{
-  font-size:13px;
-  line-height:1.55;
-  color:var(--ink);
-}
-.content-key b{color:var(--orange)}
-.content-toggle{
-  width:100%;
-  margin-top:12px;
-  padding:10px 0 0;
-  border:0;
-  border-top:1px solid var(--line);
-  background:transparent;
-  color:var(--olive);
+.logo img,.preview img{width:100%;height:100%;object-fit:cover}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-top:14px}
+.title{font-weight:800;font-size:17px}
+.meta{font-size:12px;color:var(--muted);margin-top:4px}
+.desc{font-size:13px;color:var(--muted);line-height:1.55;margin-top:6px}
+.list{display:grid;gap:12px}
+.list-item{
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
   display:flex;
   justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
   align-items:center;
-  cursor:pointer;
-  font-size:11px;
-  font-weight:850;
 }
-.content-toggle .chev{transition:.2s}
-.content-card.open .content-toggle .chev{transform:rotate(180deg)}
-.content-extra{
-  display:grid;
-  grid-template-rows:0fr;
-  transition:grid-template-rows .24s ease;
+.list-copy{min-width:0;flex:1}
+
+.form-grid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px}
+.fields{display:grid;gap:14px}
+.fields.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+label{display:block;font-size:13px;font-weight:700;color:#554c45}
+input,textarea,select{
+  width:100%;
+  margin-top:8px;
+  padding:12px 13px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  color:var(--text);
+  outline:none;
 }
-.content-extra > div{overflow:hidden}
-.content-card.open .content-extra{grid-template-rows:1fr}
-.extra-inner{
-  padding-top:10px;
+textarea{min-height:88px;resize:vertical}
+input:focus,textarea:focus,select:focus{
+  border-color:#ddb29a;
+  box-shadow:0 0 0 3px rgba(232,154,112,.12);
+}
+.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:16px}
+.preview-card{
+  background:#fffdf9;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:14px;
+  position:sticky;
+  top:20px;
+}
+.preview{
+  height:190px;
+  border-radius:18px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#efe2d7,#f7eee6);
+  color:#9b897c;
   font-size:12px;
-  line-height:1.55;
-  color:var(--muted);
 }
-.extra-inner p{margin:0 0 8px}
-.extra-inner b{color:var(--ink)}
-@media(max-width:1000px){.content-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.content-grid{grid-template-columns:1fr}}
+.preview-tag{font-size:11px;letter-spacing:.08em;color:var(--muted);margin-top:12px}
+.preview-title{font-weight:800;line-height:1.35;margin-top:5px}
+.preview-angle{font-size:12px;color:var(--muted);line-height:1.5;margin-top:7px}
+.toast{min-height:34px;padding:12px 2px 0;font-size:13px;color:var(--muted)}
 
+.modal-wrap{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(43,36,31,.34);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10;
+}
+.modal-wrap.show{display:flex}
+.modal{
+  width:min(520px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:26px;
+  box-shadow:0 28px 80px rgba(45,34,28,.22);
+  padding:22px;
+}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.modal h2{margin:0;font-size:20px}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff}
 
-/* Equal-height content cards */
-.content-card{
-  display:flex;
-  flex-direction:column;
-  height:100%;
+@media(max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .nav{display:flex;overflow-x:auto}
+  .nav button{white-space:nowrap}
+  .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .form-grid{grid-template-columns:1fr}
+  .preview-card{position:static}
 }
-.content-meta{
-  display:flex;
-  flex-direction:column;
-  flex:1;
+@media(max-width:600px){
+  .app{padding:12px}
+  .main{padding:20px}
+  h1{font-size:27px}
+  .grid-3,.grid-2,.fields.two{grid-template-columns:1fr}
 }
-.content-key{
-  min-height:68px;
-}
-.content-toggle{
-  margin-top:auto;
-}
-.content-extra{
-  flex:0 0 auto;
-}
-
-
-/* V8: consistent 1:1 content artwork templates */
-.content-thumb{aspect-ratio:1 / 1;padding:0;position:relative;background:linear-gradient(145deg,#f4e3d7,#eee8dc)}
-.content-thumb>a{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;color:var(--muted);text-decoration:none}
-.content-thumb>a:has(img){padding:0}
-.content-thumb img{width:100%;height:100%;object-fit:cover;object-position:center}
-.brand.more:disabled{cursor:default;opacity:.72;background:#e2e4d8;color:var(--olive)}
-.pending-thumb{padding:18px;color:var(--muted);font-size:11px;text-align:center}
 </style>
-
 </head>
 <body>
-<nav><div class="wrap nav"><a class="logo" href="#">NAMMON<span>.</span></a><div class="links"><a href="#brands">Brands</a><a href="#works">Works</a><a href="#expertise">Expertise</a><a href="#thinking">Content Thinking</a></div></div></nav>
+<div class="app">
+  <div class="shell">
+    <aside class="sidebar panel">
+      <div class="logo-area">
+        <div class="eyebrow">NAMMON:</div>
+        <div class="brand-title">Portfolio Manager</div>
+        <div class="greeting">
+          <strong>สวัสดีน้ำมนต์ 🧡🍀</strong><br>
+          เข้ามาอัปเดตผลงานได้เลยนะ — Layout, typography และสีของเว็บไซต์ถูกล็อกไว้แล้ว น้ำมนต์แก้เฉพาะเนื้อหาได้สบาย ๆ
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="active" data-view="brands">Brands</button>
+        <button data-view="works">Selected Works</button>
+        <button data-view="skills">Skills</button>
+        <button data-view="content">Content Thinking</button>
+      </nav>
+    </aside>
 
-<main>
-<header class="wrap hero">
- <div class="hero-copy">
-   <div class="eyebrow">01 · About Nammon</div>
-   <h1>Ideas made<br><em>to connect.</em></h1>
-   <p class="lead">Hi, I'm Nammon — a digital marketer working across social media, content, biddable media and data analysis. I enjoy turning products and everyday moments into clear, useful content people can connect with.</p>
-   <div class="tags"><span class="tag">SOCIAL MEDIA</span><span class="tag">CONTENT</span><span class="tag">BIDDABLE MEDIA</span><span class="tag">DATA & REPORTING</span></div>
- </div>
- <div class="portrait-wrap">
-  <div class="portrait">
-   <img src="nammon-profile.jpg" alt="Nammon portrait">
-   <div class="sticker">CREATOR ×<br>EVERYDAY</div>
+    <main class="main panel">
+      <div class="topbar">
+        <div>
+          <div class="kicker"><span class="dot"></span>Content management</div>
+          <h1 id="pageTitle">Brands I've worked with.</h1>
+          <div class="sub" id="pageDesc">เพิ่ม ลบ แก้ไข และจัดลำดับแบรนด์ที่แสดงบนเว็บไซต์</div>
+        </div>
+        <button class="btn" id="topAction">＋ Add brand</button>
+      </div>
+
+      <section class="view active" id="brands">
+        <div class="grid grid-3" id="brandGrid"></div>
+      </section>
+
+      <section class="view" id="works">
+        <div class="list" id="workList"></div>
+      </section>
+
+      <section class="view" id="skills">
+        <div class="grid grid-2" id="skillGrid"></div>
+        <div class="actions"><button class="btn primary" id="saveSkills">Save changes</button></div>
+      </section>
+
+      <section class="view" id="content">
+        <div class="form-grid">
+          <form class="form-card" id="contentForm">
+            <div class="fields two">
+              <label>Brand<select id="contentBrand"></select></label>
+              <label>Campaign / Content Set<input id="campaign" value="Smart Living"></label>
+            </div>
+
+            <div class="fields" style="margin-top:14px">
+              <label>Objective<textarea id="objective">Make product benefits easier to understand in everyday life.</textarea></label>
+              <label>Key Message<input id="keyMessage" value="Technology that makes everyday life easier."></label>
+              <label>Content Angle<input id="contentAngle" value="Product benefit → Everyday lifestyle"></label>
+            </div>
+
+            <div class="fields two" style="margin-top:14px">
+              <label>Target Audience<input id="audience" value="Young urban consumers"></label>
+              <label>My Role<input id="role" value="Content planning"></label>
+            </div>
+
+            <div class="fields" style="margin-top:14px">
+              <label>Result <span style="font-weight:500;color:var(--muted)">(optional)</span><input id="result" placeholder="e.g. engagement, reach, leads"></label>
+              <label>Artwork upload<input id="artwork" type="file" accept="image/*"></label>
+            </div>
+
+            <div class="actions">
+              <button type="button" class="btn" id="saveDraft">Save draft</button>
+              <button type="submit" class="btn primary">Publish</button>
+            </div>
+          </form>
+
+          <aside class="preview-card">
+            <div class="eyebrow">Live preview</div>
+            <div class="preview" id="previewImage">Selected artwork</div>
+            <div class="preview-tag" id="previewTag">Xiaomi · Smart Living</div>
+            <div class="preview-title" id="previewTitle">Technology that makes everyday life easier.</div>
+            <div class="preview-angle" id="previewAngle">Product benefit → Everyday lifestyle</div>
+          </aside>
+        </div>
+      </section>
+
+      <div class="toast" id="toast"></div>
+    </main>
   </div>
- </div>
-</header>
+</div>
 
-<section id="brands"><div class="wrap">
- <div class="section-head"><div class="num">02</div><div><h2>Brands I've worked with.</h2><p class="intro">Across technology, home, lifestyle, property and consumer brands.</p></div></div>
- <div class="brand-grid">
-   <div class="brand logo-cell"><img src="xiaomi.png" alt="Xiaomi"></div>
-   <div class="brand logo-cell"><img src="ezhome.png" alt="EZhome"></div>
-   <div class="brand logo-cell"><img src="seagull.png" alt="Seagull"></div>
-   <div class="brand logo-cell"><img src="hp.png" alt="HP"></div>
-   <div class="brand logo-cell"><img src="origin.png" alt="Origin / KnightsBridge"></div>
-   <div class="brand logo-cell"><img src="chaakan.png" alt="Chaakan"></div>
-   <button class="brand more" type="button" disabled aria-disabled="true">More brands · coming soon</button>
- </div>
-</div></section>
-
-<section id="works"><div class="wrap">
- <div class="section-head"><div class="num">03</div><div><h2>Selected work, different kinds of stories.</h2><p class="intro">A small selection of work across different brands, products and audiences.</p></div></div>
- <div class="works">
-  <article class="work big orange"><div><div class="kicker">Technology · Social Content</div><h3>Xiaomi</h3><p>Product-led communication translated into accessible everyday use cases.</p></div><div class="ghost">01</div></article>
-  <article class="work small"><div><div class="kicker">Home · Always-on Content</div><h3>EZhome</h3><p>A consistent product content system across multiple home categories.</p></div><div class="ghost">02</div></article>
-  <article class="work half olive"><div><div class="kicker">Kitchen & Lifestyle</div><h3>Seagull</h3><p>From cookware to camping — different messages for different moments of use.</p></div><div class="ghost">03</div></article>
-  <article class="work half"><div><div class="kicker">Property · Lifestyle</div><h3>Origin / KnightsBridge</h3><p>Premium lifestyle communication for real-estate audiences.</p></div><div class="ghost">04</div></article>
- </div>
-</div></section>
-
-<section id="expertise"><div class="wrap">
- <div class="section-head"><div class="num">04</div><div><h2>Digital is more than a pretty feed.</h2><p class="intro">The work sits at the intersection of communication, distribution and learning from performance.</p></div></div>
- <div class="expertise">
-  <div class="skill"><b>01</b><h3>Social Media</h3><p>Planning content for the right channel, audience and moment.</p></div>
-  <div class="skill"><b>02</b><h3>Content Writing</h3><p>Turning product benefits into clear messages and useful content angles.</p></div>
-  <div class="skill"><b>03</b><h3>Biddable Media</h3><p>Supporting paid media execution with communication built for digital environments.</p></div>
-  <div class="skill"><b>04</b><h3>Data Analysis</h3><p>Reading performance and reporting to understand what the content is telling us.</p></div>
- </div>
-</div></section>
-
-<section id="thinking"><div class="wrap">
- <div class="section-head">
-  <div class="num">05</div>
-  <div>
-   <h2>Content Thinking, one message at a time.</h2>
-   <p class="intro">Think of this section like a content shelf — quick to scan, with the key message visible first. Tap each card to see the deeper content angle and format.</p>
+<div class="modal-wrap" id="brandModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="brandModalTitle">Add brand</h2>
+      <button class="icon-btn" type="button" data-close="brandModal">×</button>
+    </div>
+    <form id="brandForm">
+      <input type="hidden" id="brandIndex" value="-1">
+      <div class="fields">
+        <label>Brand name<input id="brandName" required></label>
+        <label>Category<input id="brandCategory"></label>
+        <label>Logo / image<input id="brandLogo" type="file" accept="image/*"></label>
+      </div>
+      <div class="actions">
+        <button class="btn danger" type="button" id="deleteBrand" style="margin-right:auto;display:none">Delete</button>
+        <button class="btn" type="button" data-close="brandModal">Cancel</button>
+        <button class="btn primary" type="submit">Save</button>
+      </div>
+    </form>
   </div>
- </div>
-
- <div class="content-grid">
-  <article class="content-card"><div class="content-thumb"><img src="assets/works/seagull-electric-pot.jpg" alt="Seagull electric pot content artwork"></div><div class="content-meta"><div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div><div class="content-key"><b>Key Message:</b> Make a multi-purpose electric pot feel flexible and useful for everyday cooking.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “หม้อด้ามไฟฟ้าแบบก้ำกึ่ง ชอบกึ่งไหน ทำแล้วชอบอยู่ดี!”</p><p><b>Content Angle:</b> Product versatility → everyday cooking</p><p><b>Content Type:</b> Product Education / Promotional</p></div></div></div></div></article>
-  <article class="content-card"><div class="content-thumb"><img src="assets/works/seagull-smoothie.jpg" alt="Seagull smoothie drinkware content artwork"></div><div class="content-meta"><div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div><div class="content-key"><b>Key Message:</b> Turn drinkware into part of an easy, portable smoothie routine.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “EASY TO MIX, SMOOTHIES ปั่นสมูทตี้ที่ไหนก็ดรั้ย~”</p><p><b>Content Angle:</b> Everyday use case → lifestyle convenience</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
-  <article class="content-card"><div class="content-thumb"><img src="assets/works/seagull-scale.jpg" alt="Seagull kitchen scale content artwork"></div><div class="content-meta"><div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div><div class="content-key"><b>Key Message:</b> Make a functional kitchen tool feel playful and approachable in everyday routines.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “นี่เราอยากชั่งน้ำหนักหรอ...วอดส์!”</p><p><b>Content Angle:</b> Everyday product → playful social hook</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
-  <article class="content-card"><div class="content-thumb"><img src="assets/works/seagull-blooming.jpg" alt="Seagull Blooming drinkware content artwork"></div><div class="content-meta"><div class="content-brand">SEAGULL BRAND</div><div class="content-campaign">Kitchenware & Drinkware</div><div class="content-key"><b>Key Message:</b> Give everyday drinkware a seasonal lifestyle mood that feels collectible.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “BLOOMING IN SUMMER”</p><p><b>Content Angle:</b> Seasonal mood → product lifestyle</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
-  <article class="content-card"><div class="content-thumb pending-thumb">Artwork from original post</div><div class="content-meta"><div class="content-brand">XIAOMI</div><div class="content-campaign">Smarthome Electronics</div><div class="content-key"><b>Key Message:</b> Help people choose a Smart TV by connecting product benefits with everyday entertainment needs.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ถอยทีวีใหม่ทั้งที ต้องเลือกให้เป๊ะ! TV CHECK!”</p><p><b>Content Angle:</b> Product benefit → Everyday lifestyle</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
-  <article class="content-card"><div class="content-thumb pending-thumb">Artwork from original post</div><div class="content-meta"><div class="content-brand">CHAAKAN</div><div class="content-campaign">Fashion · Footwear</div><div class="content-key"><b>Key Message:</b> Position footwear innovation as an everyday answer to foot pain and fatigue.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ทน ปวดเท้า เท้าล้า! ทำไมดิ้~”</p><p><b>Content Angle:</b> Consumer pain point → product innovation</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
-  <article class="content-card"><div class="content-thumb pending-thumb">Artwork from original post</div><div class="content-meta"><div class="content-brand">ORIGIN PROPERTY</div><div class="content-campaign">Real Estate · Condominium</div><div class="content-key"><b>Key Message:</b> Turn high-ceiling condominium features into an aspirational lifestyle people can picture themselves living.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “เหนือกว่าแค่ที่อยู่อาศัย คือการใช้ชีวิตที่เต็มไปด้วยความสุข”</p><p><b>Content Angle:</b> Condominium Lifestyle</p><p><b>Content Type:</b> Social Content</p></div></div></div></div></article>
-  <article class="content-card"><div class="content-thumb pending-thumb">Artwork from original post</div><div class="content-meta"><div class="content-brand">JSTARMAX & TIRES</div><div class="content-campaign">Driving · Max & Tires</div><div class="content-key"><b>Key Message:</b> Translate tire performance into a timely safety benefit for everyday rainy-season driving.</div><button class="content-toggle" type="button">View content thinking <span class="chev">⌄</span></button><div class="content-extra"><div><div class="extra-inner"><p><b>Original Copy:</b> “ช่วงนี้ฝนตกบ่อย ต้องเลือกยางให้ดี~”</p><p><b>Content Angle:</b> Product feature → seasonal driving need</p><p><b>Content Type:</b> Product Education / Promotional</p></div></div></div></div></article>
- </div>
-</div></section>
-</main>
-
-
-<footer><div class="wrap">
- <div class="cta"><h2>Let's make something<br><em>worth noticing.</em></h2><a class="button" href="mailto:your-email@example.com">GET IN TOUCH →</a></div>
- <div class="note">NAMMON · DIGITAL MARKETING PORTFOLIO · 2026</div>
-</div></footer>
+</div>
 
 <script>
-const openBtn = document.getElementById('openBrands');
-const closeBtn = document.getElementById('closeBrands');
-openBtn.addEventListener('click', openModal);
-closeBtn.addEventListener('click', closeModal);
+const state={
+  brands:[
+    {name:"Xiaomi",category:"Technology",logo:null},
+    {name:"EZhome",category:"Home & Living",logo:null},
+    {name:"Seagull",category:"Kitchen & Lifestyle",logo:null}
+  ],
+  works:[
+    {brand:"Xiaomi",category:"Technology · Social Content",description:"Product-led communication translated into accessible everyday-use cases."},
+    {brand:"Seagull",category:"Kitchen & Lifestyle",description:"From cookware to camping — different messages for different moments of use."}
+  ],
+  skills:[
+    {title:"Social Media",description:"Planning content for the right channel, audience and moment."},
+    {title:"Content Writing",description:"Turning product benefits into clear messages and useful content angles."},
+    {title:"Biddable Media",description:"Supporting paid media execution with communication built for digital environments."},
+    {title:"Data Analysis",description:"Reading performance data to understand what the content is telling us."}
+  ]
+};
 
-document.querySelectorAll('.content-toggle').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const card = btn.closest('.content-card');
-    card.classList.toggle('open');
-    btn.firstChild.textContent = card.classList.contains('open')
-      ? 'Hide content thinking '
-      : 'View content thinking ';
+const views={
+  brands:["Brands I've worked with.","เพิ่ม ลบ แก้ไข และจัดลำดับแบรนด์ที่แสดงบนเว็บไซต์","＋ Add brand"],
+  works:["Selected work, different kinds of stories.","แก้รายละเอียดงานที่เคยทำกับแต่ละแบรนด์ โดยไม่แตะ layout หน้าเว็บ","＋ Add work"],
+  skills:["Digital is more than a pretty feed.","แก้ชื่อและคำอธิบายของ skill cards ได้ โดยดีไซน์เดิมยังอยู่","＋ Add skill"],
+  content:["Content Thinking, one message at a time.","อัปโหลด artwork และกรอกแนวคิดการตลาดตาม field ที่กำหนด","＋ Add content"]
+};
+
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+function toast(msg){
+  $("#toast").textContent=msg;
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer=setTimeout(()=>$("#toast").textContent="",2200);
+}
+
+function renderBrands(){
+  $("#brandGrid").innerHTML="";
+  state.brands.forEach((b,i)=>{
+    const card=document.createElement("article");
+    card.className="card";
+    card.innerHTML=`
+      <div class="logo">${b.logo?`<img src="${b.logo}" alt="${b.name}">`:b.name.toUpperCase()}</div>
+      <div class="row">
+        <div><div class="title">${b.name}</div><div class="meta">${b.category||"—"}</div></div>
+        <button class="btn small" data-edit-brand="${i}">Edit</button>
+      </div>`;
+    $("#brandGrid").appendChild(card);
   });
+  populateBrandSelect();
+}
+function renderWorks(){
+  $("#workList").innerHTML="";
+  state.works.forEach((w,i)=>{
+    const item=document.createElement("article");
+    item.className="list-item";
+    item.innerHTML=`
+      <div class="list-copy">
+        <div class="meta">${w.category}</div>
+        <div class="title" style="margin-top:4px">${w.brand}</div>
+        <div class="desc">${w.description}</div>
+      </div>
+      <button class="btn small" data-edit-work="${i}">Edit details</button>`;
+    $("#workList").appendChild(item);
+  });
+}
+function renderSkills(){
+  $("#skillGrid").innerHTML="";
+  state.skills.forEach((s,i)=>{
+    const item=document.createElement("div");
+    item.className="skill-card";
+    item.innerHTML=`
+      <label>Skill title<input data-skill-title="${i}" value="${s.title}"></label>
+      <label style="margin-top:12px">Description<textarea data-skill-desc="${i}">${s.description}</textarea></label>`;
+    $("#skillGrid").appendChild(item);
+  });
+}
+function populateBrandSelect(){
+  $("#contentBrand").innerHTML=state.brands.map(b=>`<option>${b.name}</option>`).join("");
+  updatePreview();
+}
+function setView(id){
+  $$(".view").forEach(v=>v.classList.remove("active"));
+  $("#"+id).classList.add("active");
+  $$(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===id));
+  $("#pageTitle").textContent=views[id][0];
+  $("#pageDesc").textContent=views[id][1];
+  $("#topAction").textContent=views[id][2];
+  $("#topAction").dataset.action=id;
+  $("#toast").textContent="";
+}
+function openBrandModal(index=-1){
+  $("#brandIndex").value=index;
+  $("#brandModalTitle").textContent=index>=0?"Edit brand":"Add brand";
+  $("#deleteBrand").style.display=index>=0?"inline-flex":"none";
+  const b=index>=0?state.brands[index]:{name:"",category:""};
+  $("#brandName").value=b.name;
+  $("#brandCategory").value=b.category;
+  $("#brandLogo").value="";
+  $("#brandModal").classList.add("show");
+}
+function closeModal(id){$("#"+id).classList.remove("show")}
+function updatePreview(){
+  const brand=$("#contentBrand").value||"Brand";
+  const campaign=$("#campaign").value||"Campaign";
+  $("#previewTag").textContent=`${brand} · ${campaign}`;
+  $("#previewTitle").textContent=$("#keyMessage").value||"Key message";
+  $("#previewAngle").textContent=$("#contentAngle").value||"Content angle";
+}
+
+$$(".nav button").forEach(btn=>btn.addEventListener("click",()=>setView(btn.dataset.view)));
+$("#topAction").addEventListener("click",()=>{
+  const action=$("#topAction").dataset.action||"brands";
+  if(action==="brands") openBrandModal();
+  else toast(`พร้อมต่อ flow ${views[action][2].replace("＋ ","")} ตอนเชื่อม Supabase`);
 });
 
-</script>
+document.addEventListener("click",e=>{
+  const brandEdit=e.target.closest("[data-edit-brand]");
+  if(brandEdit) openBrandModal(Number(brandEdit.dataset.editBrand));
+  const workEdit=e.target.closest("[data-edit-work]");
+  if(workEdit) toast("Selected Works editor พร้อมต่อ database");
+  const close=e.target.closest("[data-close]");
+  if(close) closeModal(close.dataset.close);
+});
 
-</body></html>
+$("#brandForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const idx=Number($("#brandIndex").value);
+  const name=$("#brandName").value.trim();
+  if(!name)return;
+  const category=$("#brandCategory").value.trim();
+  const file=$("#brandLogo").files[0];
+  const save=logo=>{
+    const item={name,category,logo:logo||(idx>=0?state.brands[idx].logo:null)};
+    if(idx>=0)state.brands[idx]=item;else state.brands.push(item);
+    renderBrands();
+    closeModal("brandModal");
+    toast("Brand saved ✓");
+  };
+  if(file){
+    const reader=new FileReader();
+    reader.onload=()=>save(reader.result);
+    reader.readAsDataURL(file);
+  }else save(null);
+});
+
+$("#deleteBrand").addEventListener("click",()=>{
+  const idx=Number($("#brandIndex").value);
+  if(idx>=0){
+    state.brands.splice(idx,1);
+    renderBrands();
+    closeModal("brandModal");
+    toast("Brand deleted");
+  }
+});
+
+$("#saveSkills").addEventListener("click",()=>{
+  state.skills.forEach((s,i)=>{
+    s.title=document.querySelector(`[data-skill-title="${i}"]`).value;
+    s.description=document.querySelector(`[data-skill-desc="${i}"]`).value;
+  });
+  toast("Skills saved ✓");
+});
+
+["contentBrand","campaign","keyMessage","contentAngle"].forEach(id=>$("#"+id).addEventListener("input",updatePreview));
+$("#artwork").addEventListener("change",()=>{
+  const file=$("#artwork").files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=()=>$("#previewImage").innerHTML=`<img src="${reader.result}" alt="Artwork preview">`;
+  reader.readAsDataURL(file);
+});
+$("#saveDraft").addEventListener("click",()=>toast("Draft saved locally ✓"));
+$("#contentForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  toast("Published ✓ — ต่อ Supabase แล้วปุ่มนี้จะบันทึก database + storage");
+});
+
+renderBrands();
+renderWorks();
+renderSkills();
+setView("brands");
+</script>
+</body>
+</html>
